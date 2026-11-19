@@ -52,12 +52,46 @@
                 <div class="extracted-text"
                      role="region"
                      aria-label="Extracted document text"
-                     tabindex="0">
+                     tabindex="0" id="extracted-text">
 
                     {{ extracted_text }}
 
                 </div>
+{% if extracted_text %}
+<section class="voice-reader" aria-labelledby="voice-heading">
 
+    <h2 id="voice-heading">Listen to Your Document</h2>
+
+    <p>
+        Use the controls below to listen to the extracted text.
+    </p>
+
+    <div class="voice-controls">
+
+        <button type="button" id="speak-button">
+            Start Reading
+        </button>
+
+        <button type="button" id="pause-button" disabled>
+            Pause
+        </button>
+
+        <button type="button" id="resume-button" disabled>
+            Resume
+        </button>
+
+        <button type="button" id="stop-button" disabled>
+            Stop
+        </button>
+
+    </div>
+
+    <p id="speech-status" role="status" aria-live="polite">
+        Voice reader is ready.
+    </p>
+
+</section>
+{% endif %}
             {% else %}
 
                 <p class="error-message" role="status">
@@ -74,6 +108,6 @@
         </a>
 
     </main>
-
+<script src="{{ url_for('static', filename='js/speech.js') }}"></script>
 </body>
 </html>
