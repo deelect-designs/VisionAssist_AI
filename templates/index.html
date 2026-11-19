@@ -120,6 +120,47 @@
 
         </section>
 
+<section class="document-reader" aria-labelledby="reader-heading">
+
+    <h2 id="reader-heading">Read a Document</h2>
+
+    <p>
+        Upload a photograph of a printed document.
+        VisionAssist AI will extract the written words for you.
+    </p>
+
+    <form
+        action="{{ url_for('documents.read_document') }}"
+        method="POST"
+        enctype="multipart/form-data"
+    >
+
+        <label for="image_file">
+            Select a document image
+        </label>
+
+        <input
+            type="file"
+            id="image_file"
+            name="image_file"
+            accept=".png,.jpg,.jpeg,.webp"
+            required
+        >
+
+        <button type="submit">
+            Extract Text
+        </button>
+
+    </form>
+
+    <p class="reader-note">
+        Supported formats: PNG, JPG, JPEG and WEBP.
+        Maximum upload size: 10 MB.
+    </p>
+
+</section>
+
+
     </main>
 
     <footer class="footer">

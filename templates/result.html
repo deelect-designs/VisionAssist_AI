@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Document Reading Results | VisionAssist AI</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="container">
+            <a class="brand" href="/">
+                VisionAssist AI
+            </a>
+            <p class="tagline">
+                Your document reading results
+            </p>
+        </div>
+    </header>
+
+    <main class="container result-page">
+
+        <h1>Document Reading Results</h1>
+
+        {% if error %}
+
+            <div class="error-message" role="alert">
+                {{ error }}
+            </div>
+
+        {% else %}
+
+            <h2>Extracted Text</h2>
+
+            <p>
+                Document: {{ filename }}
+            </p>
+
+            {% if extracted_text %}
+
+                <div class="extracted-text"
+                     role="region"
+                     aria-label="Extracted document text"
+                     tabindex="0">
+
+                    {{ extracted_text }}
+
+                </div>
+
+            {% else %}
+
+                <p class="error-message" role="status">
+                    No readable text was found.
+                    Try uploading a clearer photograph.
+                </p>
+
+            {% endif %}
+
+        {% endif %}
+
+        <a class="back-link" href="/">
+            Return to VisionAssist AI
+        </a>
+
+    </main>
+
+</body>
+</html>
